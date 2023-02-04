@@ -1,0 +1,131 @@
+* {
+  font-family: 'Ubuntu', sans-serif;
+}
+
+:root {
+  --color-bg-primary: hsl(217, 100%, 97%);
+
+  --color-btn-primary: hsl(213, 96%, 18%);
+
+  --sidebar-text-primary: hsl(228, 100%, 84%);
+
+  --active-indicator: hsl(206, 94%, 87%);
+  --color-white: hsl(0, 0%, 100%);
+
+  --border-radius: 1rem;
+}
+
+.btn{
+  background-color: var(--color-btn-primary);
+  color: var(--color-white);
+  padding: .75rem 1.5rem;
+  border-radius: .4rem;
+}
+
+body {
+  background-color: var(--color-bg-primary);
+  padding: 6.5rem 0;
+}
+
+.content-container{
+  background-color: var(--color-white);
+  border-radius: var(--border-radius);
+  max-width: 58.75rem;
+  display: grid;
+  grid-template-columns: 17.125rem auto;
+}
+
+.sidebar{
+  background-image: url(assets/images/bg-sidebar-desktop.svg);
+  background-size: cover;
+  background-position: bottom;
+  border-radius: var(--border-radius);
+}
+
+.indicator-item{
+  display: grid;
+  grid-template-columns: 2rem auto;
+  gap: 1rem;
+  margin-bottom: 1.75rem;
+}
+
+.indicator{
+  height: 2rem;
+  width: 2rem;
+  border-radius: 50%;
+  border: 1px solid var(--color-white);
+  color: var(--color-white);
+  font-weight: 700;
+}
+
+.indicator.active{
+  border-color: var(--active-indicator);
+  background-color: var(--active-indicator);
+  color: #000;
+}
+
+.indicator-text p,
+.indicator-text h3{
+  margin: 0;
+}
+
+.indicator-text p{
+  font-size: .8rem;
+  color: var(--sidebar-text-primary);
+}
+
+.indicator-text h3{
+  color: var(--color-white);
+  font-size: .95rem;
+  letter-spacing: .1rem;
+}
+
+
+#regForm {
+  background-color: #ffffff;
+  /* margin: 100px auto;
+  padding: 40px;
+  width: 70%;
+  min-width: 300px; */
+}
+
+/* Style the input fields */
+input {
+  padding: 10px;
+  width: 100%;
+  font-size: 17px;
+  font-family: Raleway;
+  border: 1px solid #aaaaaa;
+}
+
+/* Mark input boxes that gets an error on validation: */
+input.invalid {
+  background-color: #ffdddd;
+}
+
+/* Hide all steps by default: */
+.tab {
+  display: none;
+}
+
+/* Make circles that indicate the steps of the form: */
+.step {
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbbbbb;
+  border: none;
+  border-radius: 50%;
+  display: inline-block;
+  opacity: 0.5;
+}
+
+/* Mark the active step: */
+.step.active {
+  opacity: 1;
+}
+
+/* Mark the steps that are finished and valid: */
+.step.finish {
+  background-color: #4CAF50;
+}
