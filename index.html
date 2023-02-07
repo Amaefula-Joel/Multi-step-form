@@ -15,20 +15,20 @@
   <title>Frontend Mentor | Multi-step form</title>
 </head>
 
-<body>
+<body background="C:\Users\Dell\Desktop\web\webprojects\multi-step-form-main\assets\images\bg-sidebar-mobile.svg">
 
 
-  <div class="container-fluid">
+  <div class="container-fluid px-0 px-md-3">
 
     <h1 class="sr-only">Multi step form</h1>
 
-    <div class="content-container mx-auto p-3">
+    <div class="content-container mx-auto p-md-3">
 
       <!-- sidebar starts here -->
-      <div class="sidebar p-4">
+      <div class="sidebar d-md-block d-flex justify-content-center align-items-start">
 
-        <div class="indicator-item align-items-center">
-          <div class="indicator d-flex align-items-center justify-content-center"><span>1</span></div>
+        <div class="indicator-item  align-items-center">
+          <div class="indicator active d-flex align-items-center justify-content-center"><span>1</span></div>
 
           <div class="indicator-text">
             <p>STEP 1</p>
@@ -36,7 +36,7 @@
           </div>
         </div>
 
-        <div class="indicator-item align-items-center">
+        <div class="indicator-item  align-items-center">
           <div class="indicator d-flex align-items-center justify-content-center"><span>2</span></div>
 
           <div class="indicator-text">
@@ -45,7 +45,7 @@
           </div>
         </div>
 
-        <div class="indicator-item align-items-center">
+        <div class="indicator-item  align-items-center">
           <div class="indicator d-flex align-items-center justify-content-center"><span>3</span></div>
 
           <div class="indicator-text">
@@ -54,7 +54,7 @@
           </div>
         </div>
 
-        <div class="indicator-item align-items-center">
+        <div class="indicator-item  align-items-center">
           <div class="indicator d-flex align-items-center justify-content-center"><span>4</span></div>
 
           <div class="indicator-text">
@@ -67,20 +67,51 @@
       <!-- sidebar ends here -->
 
       <!-- form starts here -->
-      <form id="regForm" action="">
-
-        <h1>Register:</h1>
+      <form id="regForm" class="d-flex flex-column justify-content-between" action="">
 
         <!-- One "tab" for each step in the form: -->
-        <div class="tab">Name:
-          <p><input placeholder="First name..." oninput="this.className = ''"></p>
-          <p><input placeholder="Last name..." oninput="this.className = ''"></p>
-        </div>
 
-        <div class="tab">Contact Info:
-          <p><input placeholder="E-mail..." oninput="this.className = ''"></p>
-          <p><input placeholder="Phone..." oninput="this.className = ''"></p>
+        <!-- step 1 starts -->
+        <div class="tab">
+
+          <div class="tab-header pb-md-3">
+            <h2>Personal Info</h2>
+            <p>Please provide your name, email address, and phone number.</p>
+          </div>
+
+          <div class="form-group">
+            <label for="">Name</label>
+            <input type="text" class="form-control" placeholder="e.g. Stephen King" oninput="classReset(this)">
+          </div>
+
+          <div class="form-group">
+            <label for="">Email Address</label>
+            <input type="email" class="form-control" placeholder="e.g. stephenking@lorem.com" oninput="classReset(this)">
+          </div>
+
+          <div class="form-group">
+            <label for="">Phone Number</label>
+            <input type="tel" class="form-control" placeholder="e.g. +1 234 567 890" oninput="classReset(this)">
+          </div>
+          
         </div>
+        <!-- step 1 ends -->
+
+        <!-- step 2 starts -->
+        <div class="tab">
+
+          <div class="tab-header pb-md-3">
+            <h2>Select your plan</h2>
+            <p>You have the option of monthly or yearly billing.</p>
+          </div>
+
+          <div class="form-group">
+            <label for="">Name</label>
+            <input type="text" class="form-control" placeholder="e.g. Stephen King" oninput="classReset(this)">
+          </div>
+
+        </div>
+        <!-- step 2 ends -->
 
         <div class="tab">Birthday:
           <p><input placeholder="dd" oninput="this.className = ''"></p>
@@ -93,20 +124,23 @@
           <p><input placeholder="Password..." oninput="this.className = ''"></p>
         </div>
 
-        <div style="overflow:auto;">
-          <div style="float:right;">
-            <button type="button" id="prevBtn" class="btn" onclick="nextPrev(-1)">Previous</button>
-            <button type="button" id="nextBtn" class="btn" onclick="nextPrev(1)">Next Step</button>
+        <div class="controls-container d-flex justify-content-between mt-3">
+          <div>
+            <button type="button" id="prevBtn" class="btn back" onclick="nextPrev(-1)">Go Back</button>
+          </div>
+
+          <div>
+            <button type="button" id="nextBtn" class="btn next" onclick="nextPrev(1)"">Next Step</button>
           </div>
         </div>
 
         <!-- Circles which indicates the steps of the form: -->
-        <div style="text-align:center;margin-top:40px;">
+        <!-- <div style="text-align:center;margin-top:40px;">
           <span class="step"></span>
           <span class="step"></span>
           <span class="step"></span>
           <span class="step"></span>
-        </div>
+        </div> -->
 
       </form>
       <!-- form ends here -->
@@ -201,7 +235,7 @@
   <!-- Step 4 start -->
 
   Finishing up
-  Double-check everything looks OK before confirming.
+  Double-classReset everything looks OK before confirming.
 
   <!-- Dynamically add subscription and add-on selections here -->
 
