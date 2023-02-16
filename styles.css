@@ -27,13 +27,13 @@ body {
 }
 
 .btn{
-  color: var(--color-white);
   padding: .75rem 1.5rem;
   border-radius: .4rem;
   font-weight: 500;
 }
 
 .btn.next{
+  color: var(--color-white);
   background-color: var(--color-primary);
 }
 .btn.next:hover{color: #fff;}
@@ -159,6 +159,7 @@ body {
 .tab, .controls-container{
   max-width: 28.625rem;
   margin: 0 auto;
+  width: 100%;
 }
 
 .tab {
@@ -184,10 +185,6 @@ label{
   color: var(--form-text-primary);
 }
 
-.controls-container{
-  width: 100%;
-}
-
 @media (max-width: 768px) {
   
 
@@ -205,6 +202,7 @@ label{
   .tab{
     background-color: var(--color-white);
     border-radius: var(--border-radius);
+    width: auto;
     margin: 0 1rem;
     padding: 2rem 1.3rem;
   }
@@ -258,5 +256,34 @@ input.invalid {
 
   .form-control, label{
     font-size: .8rem;
+  }
+}
+
+/* second step tab style */
+.plan{
+  border: 2px solid var(--border-color);
+  border-radius: var(--border-radius);
+  padding: .8rem;
+}
+
+.plan img{
+  width: 40px;
+}
+
+.plan .plan-name{
+  /* margin: 0; */
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.plan .price{
+  color: var(--form-text-primary);
+  font-size: .875rem;
+}
+
+@media (max-width: 768px) {
+  .plan{
+    display: grid;
+    grid-template-columns: auto 1fr;
   }
 }
