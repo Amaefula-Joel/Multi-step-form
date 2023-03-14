@@ -1,6 +1,8 @@
 var currentTab = 0; // Current tab is set to be the first tab (0)
 showTab(currentTab); // Display the current tab
 
+const formToggle = document.querySelector(".plan-option-toggle");
+
 function showTab(n) {
   let prevBtn = document.getElementById("prevBtn");
   let nextBtn = document.getElementById("nextBtn");
@@ -77,3 +79,46 @@ function classReset(e){
     e.classList.remove("invalid");
   }
 }
+
+
+formToggle.addEventListener("click", function (e) {
+  // toggles the active class
+  formToggle.classList.toggle('active');
+
+  // stores the year plan
+  const monthlyPlan = [ "9/mo","12/mo", "15/mo"];
+  const yearlyPlan = [ "90/yr","120/yr", "150/yr"];
+
+  // element for displaying the price
+  const prices = document.querySelectorAll(".price");
+
+  // element for showing discount
+  const discount = document.querySelectorAll(".discount");
+
+  // all the radio inputs
+  const planInput = document.querySelectorAll(".plan-input");
+
+  // checks if the toggle button has the active class
+  if (formToggle.classList.contains("active")) {
+    formToggle.dataset.plan = "yearly";
+
+    for (let i = 0; i < monthlyPlan.length; i++) {
+      prices[i].textContent = `$${yearlyPlan[i]}`;
+      discount[i].classList.add("show");
+
+      // changes the value of input to match plan
+      planInput[i].value = yearlyPlan[i];
+    }
+
+  } else {
+    formToggle.dataset.plan = "monthly";
+    
+    for (let i = 0; i < monthlyPlan.length; i++) {
+      prices[i].textContent = `$${monthlyPlan[i]}`;
+      discount[i].classList.remove("show");
+
+      planInput[i].value = monthlyPlan[i];
+    }
+  }
+
+});
