@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- displays site properly based on user's device -->
+  <meta name="description" content="This is a frontend challenge solution from FronendMentor">
 
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
 
@@ -72,7 +72,7 @@
         <!-- One "tab" for each step in the form: -->
 
         <!-- step 1 starts -->
-        <!-- <div class="tab">
+        <div class="tab">
 
           <div class="tab-header pb-md-3">
             <h2>Personal Info</h2>
@@ -80,21 +80,27 @@
           </div>
 
           <div class="form-group">
-            <label for="">Name</label>
-            <input type="text" class="form-control" placeholder="e.g. Stephen King" oninput="classReset(this)">
+            <div class="message-con d-flex justify-content-between">
+              <label for="">Name</label>
+            </div>
+            <input type="text" class="form-control input-personal" placeholder="e.g. Stephen King" oninput="classReset(this)">
           </div>
 
           <div class="form-group">
-            <label for="">Email Address</label>
-            <input type="email" class="form-control" placeholder="e.g. stephenking@lorem.com" oninput="classReset(this)">
+            <div class="message-con d-flex justify-content-between">
+              <label for="">Email Address</label>
+            </div>
+            <input type="email" class="form-control input-personal" placeholder="e.g. stephenking@lorem.com" oninput="classReset(this)">
           </div>
 
           <div class="form-group">
-            <label for="">Phone Number</label>
-            <input type="tel" class="form-control" placeholder="e.g. +1 234 567 890" oninput="classReset(this)">
+            <div class="message-con d-flex justify-content-between">
+              <label for="">Phone Number</label>
+            </div>
+            <input type="tel" class="form-control input-personal" placeholder="e.g. +1 234 567 890" oninput="classReset(this)">
           </div>
           
-        </div> -->
+        </div>
         <!-- step 1 ends -->
 
         <!-- step 2 starts -->
@@ -105,18 +111,18 @@
             <p>You have the option of monthly or yearly billing.</p>
           </div>
 
-          <div class="d-md-flex d-block plan-tab-body">
+          <div class="d-md-flex plan-tab-body">
             
             <!-- plan starts -->
             <div class="plan">
-              <input type="radio" id="plan-arcade" name="plan" value="$9/mo" class="plan-input sr-only" checked>
-              <label for="plan-arcade" class="d-block">
+              <input type="radio" id="Arcade" name="plan" value="9" class="plan-input sr-only" checked>
+              <label for="Arcade" class="d-block">
                   <div class="select-input">
                   <img src="assets/images/icon-arcade.svg" alt="arcade" class="mb-md-5">
 
                   <div>
-                    <p class="plan-name m-0">Arcade</p>
-                    <p class="price m-0">$9/mo</p>
+                    <p class="form-input-title m-0">Arcade</p>
+                    <p class="price sec-form-text m-0">$9/mo</p>
                     <p class="discount m-0">2 months free</p>
                   </div>
                 </div>
@@ -126,14 +132,13 @@
             
             <!-- plan starts -->
             <div class="plan">
-              <input type="radio" id="plan-advanced" name="plan" value="$12/mo" class="plan-input sr-only">
-              <label for="plan-advanced" class="d-block">
+              <input type="radio" id="Advanced" name="plan" value="12" class="plan-input sr-only">
+              <label for="Advanced" class="d-block">
                 <div class="select-input">
                   <img src="assets/images/icon-advanced.svg" alt="Advanced" class="mb-md-5">
-
                   <div>
-                    <p class="plan-name m-0">Advanced</p>
-                    <p class="price m-0">$12/mo</p>
+                    <p class="form-input-title m-0">Advanced</p>
+                    <p class="price sec-form-text m-0">$12/mo</p>
                     <p class="discount m-0">2 months free</p>
                   </div>
                 </div>
@@ -143,14 +148,14 @@
             
             <!-- plan starts -->
             <div class="plan">
-              <input type="radio" id="plan-pro" name="plan" value="$15/mo" class="plan-input sr-only">
-              <label for="plan-pro" class="d-block">
+              <input type="radio" id="Pro" name="plan" value="15" class="plan-input sr-only">
+              <label for="Pro" class="d-block">
                 <div class="select-input">
                   <img src="assets/images/icon-pro.svg" alt="Pro" class="mb-md-5">
 
                   <div>
-                    <p class="plan-name m-0">Pro</p>
-                    <p class="price m-0">$15/mo</p>
+                    <p class="form-input-title m-0">Pro</p>
+                    <p class="price sec-form-text m-0">$15/mo</p>
                     <p class="discount m-0">2 months free</p>
                   </div>
                 </div>
@@ -163,7 +168,7 @@
           <div class="plan-option d-flex justify-content-center align-items-center mt-5 p-3">
             <span class="monthly">Monthly</span>
             <!-- toggle button -->
-            <div class="plan-option-toggle mx-3" data-plan="monthly"></div>
+            <div class="plan-option-toggle mx-3" data-plan="Monthly"></div>
 
             <span class="yearly">Yearly</span>
           </div>
@@ -171,17 +176,104 @@
         </div>
         <!-- step 2 ends -->
 
-        <div class="tab">Birthday:
-          <p><input placeholder="dd" oninput="this.className = ''"></p>
-          <p><input placeholder="mm" oninput="this.className = ''"></p>
-          <p><input placeholder="yyyy" oninput="this.className = ''"></p>
-        </div>
+        <!-- step 3 starts -->
+        <div class="tab">
+          <div class="tab-header pb-md-3">
+            <h2>Pick add-ons</h2>
+            <p>Add-ons help enhance your gaming experience.</p>
+          </div>
+          
+          <!-- form checkbox input area -->
+          <div>
+            <!-- add-on form item -->
+            <div class="add-on">
+              <label class="d-block">
+                <div class="select-input d-flex justify-content-between align-items-center mb-3 py-3">
+                  <div class="flex-grow-0">
+                    <input type="checkbox" name="add-ons" value="Online service" class="add-on-input">
+                  </div>
 
-        <div class="tab">Login Info:
-          <p><input placeholder="Username..." oninput="this.className = ''"></p>
-          <p><input placeholder="Password..." oninput="this.className = ''"></p>
-        </div>
+                  <div class="flex-grow-1 px-3">
+                    <p class="form-input-title m-0">Online services</p>
+                    <p class="sec-form-text m-0">Acess to multiplayer games</p>
+                  </div>
 
+                  <div class="flex-grow-0">
+                    <span class="add-on-price">+$1/mo</span>
+                  </div>
+                </div>
+              </label>
+            </div>
+
+            <!-- add-on form item -->
+            <div class="add-on">
+              <label class="d-block">
+                <div class="select-input d-flex justify-content-between align-items-center mb-3 py-3">
+                  <div class="flex-grow-0">
+                    <input type="checkbox" name="add-ons" value="Larger storage" class="add-on-input">
+                  </div>
+
+                  <div class="flex-grow-1 px-3">
+                    <p class="form-input-title m-0">Larger storage</p>
+                    <p class="sec-form-text m-0">Extra 1TB of cloud space</p>
+                  </div>
+    
+                  <div class="flex-grow-0">
+                    <span class="add-on-price">+$2/mo</span>
+                  </div>
+                </div>
+              </label>
+            </div>
+            
+            <!-- add-on form item -->
+            <div class="add-on">
+              <label class="d-block">
+                <div class="select-input d-flex justify-content-between align-items-center mb-3 py-3">
+                  <div class="flex-grow-0">
+                    <input type="checkbox" name="add-ons" value="Customizable profile" class="add-on-input">
+                  </div>
+    
+                  <div class="flex-grow-1 px-3">
+                    <p class="form-input-title m-0">Customizable profile</p>
+                    <p class="sec-form-text m-0">Custom theme on your profile</p>
+                  </div>
+    
+                  <div class="flex-grow-0">
+                    <span class="add-on-price">+$2/mo</span>
+                  </div>
+                </div>
+              </label>
+            </div>
+
+          </div>
+
+        </div>
+        <!-- step 3 ends -->
+
+
+        <!-- step 4 starts -->
+
+        <div class="tab"">
+          
+          <div class="tab-header pb-md-3">
+            <h2>Finishing up</h2>
+            <p>Double-check everything looks OK before confirming.</p>
+          </div>
+
+          <div id="summary-body" class="summary-body px-4 py-3">
+
+          </div>
+
+          <div id="summary-total" class="d-flex justify-content-between p-4">
+            <p class="light-text"> Total (per <span class="total-plan"></span>)</p>
+
+            <span class="total-price"></span>
+          </div>
+
+        </div>
+        <!-- step 4 ends -->
+
+        <!-- form step navigation -->
         <div class="controls-container d-flex justify-content-between mt-3">
           <div>
             <button type="button" id="prevBtn" class="btn back" onclick="nextPrev(-1)">Go Back</button>

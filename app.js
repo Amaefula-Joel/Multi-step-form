@@ -1,7 +1,34 @@
-var currentTab = 0; // Current tab is set to be the first tab (0)
-showTab(currentTab); // Display the current tab
+const formPlanToggle = document.querySelector(".plan-option-toggle");
+// element for displaying the price
+const prices = document.querySelectorAll(".price");
 
-const formToggle = document.querySelector(".plan-option-toggle");
+// element for showing discount
+const discount = document.querySelectorAll(".discount");
+
+// all the radio inputs
+const planInput = document.querySelectorAll(".plan-input");
+
+// price element of the add-on form step
+const addOnPrice = document.querySelectorAll(".add-on-price");
+
+var currentTab = 0; // Current tab is set to be the first tab (0)
+
+const payment = {
+  yearly: {
+    plan: [ "90","120", "150"],
+    addOns: ["10", "20", "20"]
+  },
+  monthly: {
+    plan: [ "9","12", "15"],
+    addOns: ["1", "2", "2"]
+  }
+};
+
+const errorMessage = `<p class="invalid">This field is required</p>`;
+
+window.addEventListener("DOMContentLoaded", function () {
+  showTab(currentTab); // Display the current tab
+});
 
 function showTab(n) {
   let prevBtn = document.getElementById("prevBtn");
@@ -18,8 +45,19 @@ function showTab(n) {
   }
   if (n == (x.length - 1)) {
     nextBtn.innerHTML = "Submit";
+
+    // add new styles
+    nextBtn.classList.remove("next");
+    nextBtn.classList.add("submit");
+
+    summary();
+    
   } else {
     nextBtn.innerHTML = "Next Step";
+
+    // add new styles
+    nextBtn.classList.remove("submit");
+    nextBtn.classList.add("next");
   }
   // ... and run a function that displays the correct step indicator:
   fixStepIndicator(n)
@@ -46,15 +84,29 @@ function nextPrev(n) {
 
 function validateForm() {
   // This function deals with validation of the form fields
-  var x, y, i, valid = true;
+  let x, y, i, messageContainer, valid = true;
   x = document.getElementsByClassName("tab");
-  y = x[currentTab].getElementsByTagName("input");
+  y = x[currentTab].querySelectorAll(".input-personal");
+  // message to be appended to an input
+  
+
   // A loop that checks every input field in the current tab:
   for (i = 0; i < y.length; i++) {
     // If a field is empty...
     if (y[i].value == "") {
+      // get the div with "message-con" class then add the error message
+      messageContainer = y[i].previousElementSibling;
+      if (messageContainer.classList.contains("message-con")) {
+
+        // check if the error message is already present, if not it prints the message
+        if (messageContainer.querySelector(".invalid") === null) {
+          messageContainer.innerHTML += errorMessage;
+        }
+      }
+      
       // add an "invalid" class to the field:
       y[i].className += " invalid";
+      
       // and set the current valid status to false:
       valid = false;
     }
@@ -72,53 +124,155 @@ function fixStepIndicator(n) {
   x[n].className += " active";
 }
 
-// resets the class of inputs
+// resets the class of inputs when a key is pressed
 function classReset(e){
   // checks if the input alredy has the class invalid
   if (e.classList.contains("invalid")) {
     e.classList.remove("invalid");
+
+    let messageContainer = e.previousElementSibling;
+    if (messageContainer.classList.contains("message-con")) {
+      // messageContainer.innerHTML -= errorMessage;
+      messageContainer.removeChild(messageContainer.querySelector(".invalid"));
+      // console.log(messageContainer.querySelector(".invalid"));
+    }
   }
 }
 
 
-formToggle.addEventListener("click", function (e) {
+formPlanToggle.addEventListener("click", function (e) {
   // toggles the active class
-  formToggle.classList.toggle('active');
+  formPlanToggle.classList.toggle('active');  
 
-  // stores the year plan
-  const monthlyPlan = [ "9/mo","12/mo", "15/mo"];
-  const yearlyPlan = [ "90/yr","120/yr", "150/yr"];
+  const priceFormat = (n, plan) => {
+    if (plan === "yr") {
+      return `$${n}/yr`;
+    } else {
+      return `$${n}/mo`;
+    }
+  }
 
-  // element for displaying the price
-  const prices = document.querySelectorAll(".price");
+  // for the plan fpr step
+  const yearPlan = payment.yearly.plan.map(function (plan) { return priceFormat(plan, "yr") });
+  const monthlyPlan = payment.monthly.plan.map(function (plan) { return priceFormat(plan, "mo") });
+  //for the addons form step
+  const addOnYearlyPlan = payment.yearly.addOns.map(function (plan) { return priceFormat(plan, "yr") });
+  const addOnMonthlyPlan = payment.monthly.addOns.map(function (plan) { return priceFormat(plan, "mo") });
 
-  // element for showing discount
-  const discount = document.querySelectorAll(".discount");
+  // checks if the toggle button has data set monthly or yearly
+  if (formPlanToggle.dataset.plan == "Monthly") {
+    //  if the user chooses yearly plan
 
-  // all the radio inputs
-  const planInput = document.querySelectorAll(".plan-input");
+    formPlanToggle.dataset.plan = "Yearly";
 
-  // checks if the toggle button has the active class
-  if (formToggle.classList.contains("active")) {
-    formToggle.dataset.plan = "yearly";
+    for (let i = 0; i < yearPlan.length; i++) {
+      prices[i].textContent = yearPlan[i];
 
-    for (let i = 0; i < monthlyPlan.length; i++) {
-      prices[i].textContent = `$${yearlyPlan[i]}`;
+      // shows the discount text
       discount[i].classList.add("show");
 
-      // changes the value of input to match plan
-      planInput[i].value = yearlyPlan[i];
+      // changes the value of  theinput to match plan
+      planInput[i].value = payment.yearly.plan[i];
+
+      // changes the text content of the add-on price to match plan
+      addOnPrice[i].textContent = `+${addOnYearlyPlan[i]}`; 
     }
 
   } else {
-    formToggle.dataset.plan = "monthly";
+    //  if the user chooses monthly plan
+
+    formPlanToggle.dataset.plan = "Monthly";
     
     for (let i = 0; i < monthlyPlan.length; i++) {
-      prices[i].textContent = `$${monthlyPlan[i]}`;
+      prices[i].textContent = monthlyPlan[i];
+
+      // hidess the discount text
       discount[i].classList.remove("show");
 
-      planInput[i].value = monthlyPlan[i];
+      // changes the value of  theinput to match plan
+      planInput[i].value = payment.monthly.plan[i];
+
+      // changes the text content of the add-on price to match plan
+      addOnPrice[i].textContent = `+${addOnMonthlyPlan[i]}`;
     }
   }
 
 });
+
+const addOns = document.querySelectorAll(".add-on");
+
+addOns.forEach(function (addOn) {
+  const addOnInput = addOn.querySelector(".add-on-input");
+  const selectInput = addOn.querySelector(".select-input");
+
+  addOnInput.addEventListener("click", function () {
+    selectInput.classList.toggle('selected');
+  });
+});
+
+
+function summary() {
+  const summaryContent = document.querySelector("#summary-body");
+  const summaryTotal = document.querySelector("#summary-total");
+
+  const planType = formPlanToggle.dataset.plan; // (Monthly or Yearly)
+  const inputPlan = document.querySelector("input[name=plan]:checked"); // radio input checked
+  const planId = inputPlan.id; // arcade or advanced or pro
+  const planValue = inputPlan.value; // number attached to plan
+
+  let totalAmount = Number(planValue);
+
+  const planTag = () => { // mo or yr
+    if (planType === "Monthly") {
+      return "mo";
+    } else {
+      return "yr";
+    }
+  };
+  
+  let content = `
+    <div class="d-flex justify-content-between align-items-center border-bottom pb-4">
+      <div>
+        <p class="bold-text mb-0">${planId} (${planType})</p>
+        <button type="button" class="changeBtn p-0 border-0" onclick="change()">Change</button>
+      </div>
+      <span class="bold-text">$${planValue}/${planTag()}</span>
+    </div>`;
+
+    const selectedInputs = document.querySelectorAll("input.add-on-input");
+    selectedInputs.forEach(function (input, index) {
+      let price = planType === "Monthly" ? Number(payment.monthly.addOns[index]) : Number(payment.yearly.addOns[index]);
+      
+      if (input.checked) {
+        const inputValue = input.getAttribute("value") ;
+        content += `
+          <div class="d-flex justify-content-between mb-3">
+            <p class="light-text mb-0">${inputValue}</p>
+            <span class="font-weight-bold text-secondary">
+              +$${price + planTag()}
+            </span>
+          </div>`;
+
+          totalAmount += price;
+      }
+    });
+
+    summaryContent.innerHTML = content;
+
+    summaryTotal.querySelector(".total-plan").innerHTML = planType.slice(0, -2).toLowerCase();
+
+    summaryTotal.querySelector(".total-price").innerHTML = `${totalAmount}${planTag()}`;
+    
+    console.log(totalAmount);
+}
+
+function change(){
+  // debugger;
+  currentTab = 0;
+  let x = document.getElementsByClassName("tab");
+  for (let i = 0; i < x.length; i++) {
+    x[i].style.display = 'none';
+  }
+
+  showTab(currentTab);
+}
