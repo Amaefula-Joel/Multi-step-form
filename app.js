@@ -1,3 +1,7 @@
+const form = document.querySelector("#regForm");
+
+const thanksYou = document.querySelector(".thanks");
+
 const formPlanToggle = document.querySelector(".plan-option-toggle");
 // element for displaying the price
 const prices = document.querySelectorAll(".price");
@@ -50,6 +54,7 @@ function showTab(n) {
     nextBtn.classList.remove("next");
     nextBtn.classList.add("submit");
 
+    // populate the filled summary text as well as price
     summary();
     
   } else {
@@ -75,7 +80,13 @@ function nextPrev(n) {
   // if you have reached the end of the form... :
   if (currentTab >= x.length) {
     //...the form gets submitted:
-    document.getElementById("regForm").submit();
+    // form.submit();
+
+    // but this challenge doesn't require the backend for this project, so i commented it
+    // instead show the thank you page 
+    form.style.display = 'none';
+    thanksYou.style.display = 'flex';
+
     return false;
   }
   // Otherwise, display the correct tab:
@@ -199,6 +210,7 @@ formPlanToggle.addEventListener("click", function (e) {
 
 });
 
+// this is for the inpot fields on the third form step
 const addOns = document.querySelectorAll(".add-on");
 
 addOns.forEach(function (addOn) {
@@ -216,7 +228,7 @@ function summary() {
   const summaryTotal = document.querySelector("#summary-total");
 
   const planType = formPlanToggle.dataset.plan; // (Monthly or Yearly)
-  const inputPlan = document.querySelector("input[name=plan]:checked"); // radio input checked
+  const inputPlan = document.querySelector("input[name=plan]:checked"); // radio input checkedsubmit
   const planId = inputPlan.id; // arcade or advanced or pro
   const planValue = inputPlan.value; // number attached to plan
 
@@ -262,8 +274,6 @@ function summary() {
     summaryTotal.querySelector(".total-plan").innerHTML = planType.slice(0, -2).toLowerCase();
 
     summaryTotal.querySelector(".total-price").innerHTML = `${totalAmount}${planTag()}`;
-    
-    console.log(totalAmount);
 }
 
 function change(){

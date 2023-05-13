@@ -213,7 +213,7 @@ body {
 
 
 /* form style starts here */
-#regForm {
+#regForm, .thanks {
   background-color: var(--color-white);
   padding: 2.2rem 0 1rem;
 }
@@ -267,6 +267,7 @@ label{
     width: auto;
     margin: 0 1rem;
     padding: 2rem 1.3rem;
+    box-shadow: 0px 3px 6px rgb(207, 207, 207);
   }
 
   .tab-header h2{
@@ -417,4 +418,25 @@ p.invalid{
   font-size: 1rem;
   font-weight: 500;
   color: var(--color-primary);
+}
+
+/* thnak you page */
+.thanks .content{
+  width: 100%;
+  max-width: 450px;
+}
+
+@media (max-width: 768px) {
+  .thanks{
+    min-height: 25.5rem;
+    margin: -4.5rem 1rem 0;
+    border-radius: var(--border-radius);
+    box-shadow: 0px 3px 6px rgb(207, 207, 207);
+    padding: 2rem 1.3rem;
+  }
+
+  .thanks .content h3{
+    font-size: 1.5rem;
+  }
+  
 }

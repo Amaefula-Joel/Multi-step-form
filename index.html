@@ -8,7 +8,8 @@
 
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
 
-  <link rel="stylesheet" href="bootstrap-4.6.2-dist/css/bootstrap.min.css">
+  <!-- <link rel="stylesheet" href="bootstrap-4.6.2-dist/css/bootstrap.min.css"> -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 
   <link rel="stylesheet" href="styles.css">
 
@@ -18,17 +19,17 @@
 <body>
 
 
-  <div class="container-fluid px-0 px-md-3">
+  <div class="container-fluid || px-0 px-md-3">
 
     <h1 class="sr-only">Multi step form</h1>
 
-    <div class="content-container mx-auto p-md-3">
+    <div class="content-container || mx-auto p-md-3">
 
       <!-- sidebar starts here -->
-      <div class="sidebar d-md-block d-flex justify-content-center align-items-start">
+      <div class="sidebar || d-md-block d-flex justify-content-center align-items-start">
 
-        <div class="indicator-item align-items-center">
-          <div class="indicator active d-flex align-items-center justify-content-center"><span>1</span></div>
+        <div class="indicator-item || align-items-center">
+          <div class="indicator || active d-flex align-items-center justify-content-center"><span>1</span></div>
 
           <div class="indicator-text">
             <p>STEP 1</p>
@@ -37,7 +38,7 @@
         </div>
 
         <div class="indicator-item  align-items-center">
-          <div class="indicator d-flex align-items-center justify-content-center"><span>2</span></div>
+          <div class="indicator || d-flex align-items-center justify-content-center"><span>2</span></div>
 
           <div class="indicator-text">
             <p>STEP 2</p>
@@ -46,7 +47,7 @@
         </div>
 
         <div class="indicator-item  align-items-center">
-          <div class="indicator d-flex align-items-center justify-content-center"><span>3</span></div>
+          <div class="indicator || d-flex align-items-center justify-content-center"><span>3</span></div>
 
           <div class="indicator-text">
             <p>STEP 3</p>
@@ -55,7 +56,7 @@
         </div>
 
         <div class="indicator-item  align-items-center">
-          <div class="indicator d-flex align-items-center justify-content-center"><span>4</span></div>
+          <div class="indicator || d-flex align-items-center justify-content-center"><span>4</span></div>
 
           <div class="indicator-text">
             <p>STEP 4</p>
@@ -67,7 +68,7 @@
       <!-- sidebar ends here -->
 
       <!-- form starts here -->
-      <form id="regForm" class="d-flex flex-column justify-content-between" action="">
+      <form id="regForm" class="flex-column justify-content-between" style="display: flex;" action="">
 
         <!-- One "tab" for each step in the form: -->
 
@@ -81,26 +82,26 @@
 
           <div class="form-group">
             <div class="message-con d-flex justify-content-between">
-              <label for="">Name</label>
+              <label>Name</label>
             </div>
             <input type="text" class="form-control input-personal" placeholder="e.g. Stephen King" oninput="classReset(this)">
           </div>
 
           <div class="form-group">
             <div class="message-con d-flex justify-content-between">
-              <label for="">Email Address</label>
+              <label>Email Address</label>
             </div>
             <input type="email" class="form-control input-personal" placeholder="e.g. stephenking@lorem.com" oninput="classReset(this)">
           </div>
 
           <div class="form-group">
             <div class="message-con d-flex justify-content-between">
-              <label for="">Phone Number</label>
+              <label>Phone Number</label>
             </div>
             <input type="tel" class="form-control input-personal" placeholder="e.g. +1 234 567 890" oninput="classReset(this)">
           </div>
           
-        </div>
+        </div> 
         <!-- step 1 ends -->
 
         <!-- step 2 starts -->
@@ -253,7 +254,7 @@
 
         <!-- step 4 starts -->
 
-        <div class="tab"">
+        <div class="tab">
           
           <div class="tab-header pb-md-3">
             <h2>Finishing up</h2>
@@ -274,7 +275,7 @@
         <!-- step 4 ends -->
 
         <!-- form step navigation -->
-        <div class="controls-container d-flex justify-content-between mt-3">
+        <div class="controls-container || d-flex justify-content-between mt-3">
           <div>
             <button type="button" id="prevBtn" class="btn back" onclick="nextPrev(-1)">Go Back</button>
           </div>
@@ -287,23 +288,34 @@
       </form>
       <!-- form ends here -->
 
+      <!-- thank you page starts here -->
+      <div style="display: none;" class="thanks || align-items-center justify-content-center text-center mb-4 mb-md-0">
+        <div class="content">
+          <img src="assets/images/icon-thank-you.svg" class="mb-4" alt="thank you">
+
+          <h3 class="mb-2 font-weight-bold">Thank you!</h3>
+
+          <p class="text-secondary">Thanks for confirming your subscription! We hope you have fun
+            using our platform. If you ever need support, please feel free
+            to email us at support@loremgaming.com.</p>
+        </div>
+      </div>
+
     </div>
+    <!-- thank you page ends here -->
   </div>
-<!-- 
 
-  Thank you!
 
-  Thanks for confirming your subscription! We hope you have fun
-  using our platform. If you ever need support, please feel free
-  to email us at support@loremgaming.com. -->
 
-  <!-- <div class="attribution">
+  <div class="attribution text-center">
     Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
-    Coded by <a href="#">Your Name Here</a>.
-  </div> -->
+    Coded by <a href="https://www.linkedin.com/in/joel-amaefula-10a030257">Joel Amaefula</a>.
+  </div>
 
-  <script src="bootstrap-4.6.2-dist/jquery.min.js"></script>
-  <script src="bootstrap-4.6.2-dist/js/bootstrap.bundle.min.js"></script>
+  <!-- <script src="bootstrap-4.6.2-dist/jquery.min.js"></script>
+  <script src="bootstrap-4.6.2-dist/js/bootstrap.bundle.min.js"></script> -->
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
   <script src="app.js"></script>
 
 </body>
